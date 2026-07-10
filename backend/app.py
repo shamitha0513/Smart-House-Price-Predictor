@@ -12,7 +12,12 @@ from train_model import train_model_pipeline, CITIES, LOCATIONS, LOCATION_MULTIP
 app = Flask(__name__)
 CORS(app)  # Enable CORS for React frontend cross-origin requests
 
-DB_PATH = "backend/database.db"
+# Dynamic Database Path for Local Dev and Render Production Volume
+if os.path.exists("/etc/data"):
+    DB_PATH = "/etc/data/database.db"
+else:
+    DB_PATH = "backend/database.db"
+
 MODEL_PATH = "backend/models/house_model.joblib"
 METADATA_PATH = "backend/models/model_metadata.joblib"
 DATASET_PATH = "backend/data/housing_dataset.csv"
