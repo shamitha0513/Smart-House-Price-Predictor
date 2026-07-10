@@ -1,0 +1,25 @@
+# Dependency directories
+frontend/node_modules/
+node_modules/
+
+# Build outputs
+frontend/dist/
+dist/
+
+# Python cache and byte-code
+__pycache__/
+backend/__pycache__/
+*.pyc
+backend/*.pyc
+
+# Local environment variables
+.env
+frontend/.env
+backend/.env
+
+# Diagnostic logs and temp workspace files
+*.log
+.system_generated/
+.agents/
+scratch/
+check_metadata.py
