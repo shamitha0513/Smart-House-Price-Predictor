@@ -5,6 +5,8 @@ import { Compass, Sparkles, MapPin, Building, Star, Award, Heart, Check, Trash }
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 
+
+
 const CITIES = [
   "Mumbai", "Delhi", "Bangalore", "Hyderabad", "Pune", "Chennai", "Kolkata", "Ahmedabad", "Jaipur", "Lucknow",
   "Visakhapatnam", "Vijayawada", "Guntur", "Nellore", "Tirupati", "Kurnool", "Kakinada", "Rajahmundry", "Kadapa", "Anantapur", "Eluru", "Vizianagaram"
@@ -112,7 +114,7 @@ const Recommendations = () => {
     });
 
     try {
-      await fetch(`${API_URL}/api/wishlist', {
+      await fetch(`${API_URL}/api/wishlist`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

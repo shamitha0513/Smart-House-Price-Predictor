@@ -6,11 +6,13 @@ import {
 } from 'lucide-react';
 import { 
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
   ResponsiveContainer, LineChart, Line, BarChart, Bar, 
   XAxis, YAxis, CartesianGrid, Tooltip, Legend
 } from 'recharts';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 
 const CITIES = ["Mumbai", "Delhi", "Bangalore", "Hyderabad", "Pune"];
 
@@ -35,7 +37,7 @@ const Analytics = () => {
       const dataAnal = await resAnal.json();
       
       // Fetch history logs
-      const resLogs = await fetch(`${API_URL}/api/predictions-history');
+      const resLogs = await fetch(`${API_URL}/api/predictions-history`);
       const dataLogs = await resLogs.json();
       
       if (resAnal.ok) setAnalyticsData(dataAnal);

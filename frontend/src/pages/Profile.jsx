@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
   User, Mail, Calendar, Heart, Sliders, Trash2, 
   Clock, FileText, X, Printer, Download, CheckCircle
 } from 'lucide-react';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 
 const formatINR = (value) => {
   if (value >= 10000000) return `₹ ${(value / 10000000).toFixed(2)} Cr`;

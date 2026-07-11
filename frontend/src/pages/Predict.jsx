@@ -15,6 +15,8 @@ import DynamicMap from '../components/DynamicMap';
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 
+
+
 const CITIES = [
   "Mumbai", "Delhi", "Bangalore", "Hyderabad", "Pune", "Chennai", "Kolkata", "Ahmedabad", "Jaipur", "Lucknow",
   "Visakhapatnam", "Vijayawada", "Guntur", "Nellore", "Tirupati", "Kurnool", "Kakinada", "Rajahmundry", "Kadapa", "Anantapur", "Eluru", "Vizianagaram"
@@ -231,7 +233,7 @@ const Predict = ({ user }) => {
     setLoadingStepIdx(0);
 
     try {
-      const response = await fetch(`${API_URL}/api/predict', {
+      const response = await fetch(`${API_URL}/api/predict`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...inputs, user_email: user?.email || "guest@smartpredict.ai" })
@@ -293,7 +295,7 @@ const Predict = ({ user }) => {
     if (!predictionResult) return;
     setIsSaved(true);
     try {
-      await fetch(`${API_URL}/api/wishlist', {
+      await fetch(`${API_URL}/api/wishlist`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

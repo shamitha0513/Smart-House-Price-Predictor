@@ -5,6 +5,8 @@ import { ArrowRightLeft, Award, HelpCircle, Check, X, ShieldAlert, Sparkles, Sta
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 
+
+
 const CITIES = [
   "Mumbai", "Delhi", "Bangalore", "Hyderabad", "Pune", "Chennai", "Kolkata", "Ahmedabad", "Jaipur", "Lucknow",
   "Visakhapatnam", "Vijayawada", "Guntur", "Nellore", "Tirupati", "Kurnool", "Kakinada", "Rajahmundry", "Kadapa", "Anantapur", "Eluru", "Vizianagaram"
@@ -76,7 +78,7 @@ const Compare = () => {
     setLoading(true);
     
     try {
-      const response = await fetch(`${API_URL}/api/compare', {
+      const response = await fetch(`${API_URL}/api/compare`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ property_a: propA, property_b: propB })
