@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
   User, Mail, Calendar, Heart, Sliders, Trash2, 
   Clock, FileText, X, Printer, Download, CheckCircle
 } from 'lucide-react';
@@ -22,7 +25,7 @@ const Profile = ({ user }) => {
 
   const fetchWishlist = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/wishlist?email=${email}`);
+      const res = await fetch(`${API_URL}/api/wishlist?email=${email}`);
       const data = await res.json();
       if (res.ok) {
         setWishlist(data);
@@ -48,7 +51,7 @@ const Profile = ({ user }) => {
 
   const fetchHistory = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/predictions-history?email=${email}`);
+      const res = await fetch(`${API_URL}/api/predictions-history?email=${email}`);
       const data = await res.json();
       if (res.ok) {
         setHistory(data);
@@ -95,7 +98,7 @@ const Profile = ({ user }) => {
 
   const handleRemoveWishlistItem = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/wishlist/${id}`, {
+      const res = await fetch(`${API_URL}/api/wishlist/${id}`, {
         method: 'DELETE'
       });
       if (res.ok) {

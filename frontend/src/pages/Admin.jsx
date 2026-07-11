@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
   Settings, Database, Cpu, UploadCloud, Play, CheckCircle2, 
   AlertTriangle, RefreshCw, Terminal, Eye, FileSpreadsheet, Server
 } from 'lucide-react';
@@ -28,7 +31,7 @@ const Admin = () => {
 
   const fetchStatus = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/status');
+      const res = await fetch(`${API_URL}/api/status');
       const data = await res.json();
       if (res.ok) {
         setSystemStatus(data);
@@ -60,7 +63,7 @@ const Admin = () => {
   const fetchContacts = async () => {
     setContactsLoader(true);
     try {
-      const res = await fetch('http://localhost:5000/api/admin/contacts');
+      const res = await fetch(`${API_URL}/api/admin/contacts');
       const data = await res.json();
       if (res.ok) {
         setContactMessages(data);
@@ -92,7 +95,7 @@ const Admin = () => {
     addConsoleLog(`Initiating retraining process with ${activeAlgorithm}...`);
     
     try {
-      const res = await fetch('http://localhost:5000/api/admin/retrain', {
+      const res = await fetch(`${API_URL}/api/admin/retrain', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ algorithm: activeAlgorithm })
@@ -147,7 +150,7 @@ const Admin = () => {
     formData.append('file', csvFile);
 
     try {
-      const res = await fetch('http://localhost:5000/api/admin/upload-csv', {
+      const res = await fetch(`${API_URL}/api/admin/upload-csv', {
         method: 'POST',
         body: formData
       });

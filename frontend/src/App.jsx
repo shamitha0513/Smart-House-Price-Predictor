@@ -11,6 +11,9 @@ import Profile from './pages/Profile';
 import AboutContact from './pages/AboutContact';
 import InfoPolicies from './pages/InfoPolicies';
 import { 
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
   Sliders, Compass, TrendingUp, User, Bell, Moon, Sun, 
   Menu, X, Brain, LogIn, LogOut, CheckCircle, AlertCircle, Key, ArrowRight, ShieldAlert
 } from 'lucide-react';
@@ -352,7 +355,7 @@ const LoginPage = ({ user, setUser }) => {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch(`${API_URL}/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -491,7 +494,7 @@ const RegisterPage = ({ user }) => {
 
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/auth/register', {
+      const res = await fetch(`${API_URL}/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password })
@@ -673,7 +676,7 @@ const AdminLoginPage = ({ user, setUser }) => {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch(`${API_URL}/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })

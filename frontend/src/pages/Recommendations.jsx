@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Compass, Sparkles, MapPin, Building, Star, Award, Heart, Check, Trash } from 'lucide-react';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+
 const CITIES = [
   "Mumbai", "Delhi", "Bangalore", "Hyderabad", "Pune", "Chennai", "Kolkata", "Ahmedabad", "Jaipur", "Lucknow",
   "Visakhapatnam", "Vijayawada", "Guntur", "Nellore", "Tirupati", "Kurnool", "Kakinada", "Rajahmundry", "Kadapa", "Anantapur", "Eluru", "Vizianagaram"
@@ -24,7 +27,7 @@ const Recommendations = () => {
 
   const fetchRecommendations = async () => {
     setLoading(true);
-    let url = `http://localhost:5000/api/recommendations?city=${selectedCity}`;
+    let url = `${API_URL}/api/recommendations?city=${selectedCity}`;
     if (selectedBhk) url += `&bhk=${selectedBhk}`;
 
     try {
@@ -109,7 +112,7 @@ const Recommendations = () => {
     });
 
     try {
-      await fetch('http://localhost:5000/api/wishlist', {
+      await fetch(`${API_URL}/api/wishlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

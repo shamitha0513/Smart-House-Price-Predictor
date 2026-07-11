@@ -5,6 +5,9 @@ import {
   ChevronRight, ArrowUpRight, ArrowDownRight, RefreshCw, BarChart3, Database
 } from 'lucide-react';
 import { 
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
   ResponsiveContainer, LineChart, Line, BarChart, Bar, 
   XAxis, YAxis, CartesianGrid, Tooltip, Legend
 } from 'recharts';
@@ -28,11 +31,11 @@ const Analytics = () => {
     setLoading(true);
     try {
       // Fetch analytics
-      const resAnal = await fetch(`http://localhost:5000/api/analytics?city=${selectedCity}`);
+      const resAnal = await fetch(`${API_URL}/api/analytics?city=${selectedCity}`);
       const dataAnal = await resAnal.json();
       
       // Fetch history logs
-      const resLogs = await fetch('http://localhost:5000/api/predictions-history');
+      const resLogs = await fetch(`${API_URL}/api/predictions-history');
       const dataLogs = await resLogs.json();
       
       if (resAnal.ok) setAnalyticsData(dataAnal);

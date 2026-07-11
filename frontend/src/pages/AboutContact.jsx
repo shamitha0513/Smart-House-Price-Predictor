@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
   Info, Mail, Phone, MapPin, Send, HelpCircle, ChevronDown, 
   ChevronUp, CheckCircle, Cpu, Sliders, Database, Star 
 } from 'lucide-react';
@@ -50,7 +53,7 @@ const AboutContact = () => {
 
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/contact', {
+      const res = await fetch(`${API_URL}/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(contactForm)
