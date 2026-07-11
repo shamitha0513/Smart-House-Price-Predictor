@@ -327,6 +327,7 @@ const AppContent = () => {
           
           <div className="max-w-7xl mx-auto px-6 border-t border-slate-100 dark:border-slate-800/80 pt-6 mt-6 flex justify-between items-center text-[10px] text-slate-400">
             <span>© 2026 SmartPredict AI. All Rights Reserved.</span>
+            <span className="font-semibold text-slate-500 dark:text-slate-300">Designed & Developed by Shamitha Tadepalli</span>
           </div>
         </footer>
 
