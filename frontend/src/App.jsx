@@ -28,7 +28,7 @@ const alertData = [
 // Protected Route Guard
 const ProtectedRoute = ({ user, children, adminOnly = false }) => {
   if (!user) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to={adminOnly ? "/admin-login" : "/login"} replace />;
   }
   if (adminOnly && user.role !== 'admin') {
     return <Navigate to="/" replace />;
@@ -370,13 +370,23 @@ const LoginPage = ({ user, setUser }) => {
         } else {
           sessionStorage.setItem('user', JSON.stringify(data.user));
         }
-        navigate('/');
+        if (data.user.role === 'admin') {
+          navigate('/admin');
+        } else {
+          navigate('/');
+        }
       } else {
         setError(data.error || "Login credentials verification failed.");
       }
     } catch (err) {
       console.warn("Auth server offline, fallback to simulation.");
-      if (email === 'user@smartpredict.ai' && password === 'user123') {
+      if (email === 'admin@smartpredict.ai' && password === 'admin123') {
+        const mockAdmin = { name: "System Admin", email, role: "admin" };
+        setUser(mockAdmin);
+        if (rememberMe) localStorage.setItem('user', JSON.stringify(mockAdmin));
+        else sessionStorage.setItem('user', JSON.stringify(mockAdmin));
+        navigate('/admin');
+      } else if (email === 'user@smartpredict.ai' && password === 'user123') {
         const mockUser = { name: "John Doe", email, role: "user" };
         setUser(mockUser);
         if (rememberMe) localStorage.setItem('user', JSON.stringify(mockUser));
